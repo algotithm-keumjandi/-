@@ -18,3 +18,18 @@ def solution(participant, completion):
             hash[i] -= 1
     answer = list(hash.keys())[0]
     return answer
+
+# 해싱02
+https://www.acmicpc.net/problem/17219
+백준 - 비밀번호 찾기(해시)
+
+N, M = map(int, input().split())
+hash = {}
+
+for _ in range(N):
+    add, pw = map(str, input().split())
+    hash[add]  = pw
+
+for _ in range(M):
+    inp = input()
+    print(hash[inp])
