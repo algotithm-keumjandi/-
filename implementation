@@ -1,0 +1,43 @@
+구현문제 - 이해가 안되어서 코드를 보았으나, 코드를 봐도 이해 안되는 상태.. 더 공부하겠습니다!!
+(https://www.acmicpc.net/problem/5430)
+
+import sys
+from collections import deque
+
+input = sys.stdin.readline
+
+t = int(input())
+
+
+answer = []
+for _ in range(t):
+    p = input().strip()
+    n = int(input().strip())
+    arr = list(input().strip()[1:-1].split(","))
+    q = deque(arr)
+    reverse = 0
+    error = 0
+    if n == 0:
+        q = []
+
+    for i in p:
+        if i == "R":
+            reverse = not reverse # 이 부분이 이해 안감..
+        else:
+            if len(q) < 1:
+                answer.append("error")
+                error = 1
+                break
+            else:
+                if reverse:
+                    q.pop()
+                else:
+                    q.popleft()
+
+    if not error:
+        if reverse:
+            q.reverse()
+        answer.append("[" + ",".join(q) + "]")
+
+for a in answer:
+    print(a)
